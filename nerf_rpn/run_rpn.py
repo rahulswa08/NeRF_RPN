@@ -151,7 +151,7 @@ class Trainer:
         self.device_id = device_id
         self.logger = logger if logger is not None else logging.getLogger()
 
-        
+        breakpoint()
         if args.dataset_name == 'hypersim':
             self.dataset = HypersimRPNDataset
         elif args.dataset_name == 'front3d':
