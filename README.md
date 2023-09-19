@@ -3,7 +3,7 @@
 
 NeRF-RPN: A general framework for object detection in NeRFs [NeRF-RPN, CVPR 2023].
 
-This is the official pytorch implementation of [NeRF-RPN](https://arxiv.org/abs/2211.11646).
+This is the modified pytorch implementation of [NeRF-RPN](https://arxiv.org/abs/2211.11646).
 
 > [**NeRF-RPN: A general framework for object detection in NeRFs**](https://arxiv.org/abs/2211.11646)           
 > Benran Hu*, Junkai Huang*, Yichen Liu*, Yu-Wing Tai, Chi-Keung Tang           
