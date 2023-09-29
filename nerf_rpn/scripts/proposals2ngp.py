@@ -174,8 +174,11 @@ if __name__ == '__main__':
                       and os.path.isfile(os.path.join(args.proposals_path, f))]
 
     scene_names = [f.split('.')[0] for f in proposal_files]
+    # import pdb
+    # breakpoint()
 
-    for scene_name in (pbar := tqdm(scene_names)):
+    # for scene_name in (pbar := tqdm(scene_names)):
+    for scene_name in (scene_names):
         proposal_path = os.path.join(args.proposals_path, scene_name + '.npz')
         json_path = os.path.join(args.dataset_path, scene_name, 'train', 'transforms.json')
         feature_path = os.path.join(args.features_path, scene_name + '.npz')

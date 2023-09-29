@@ -4,6 +4,7 @@ from multiprocessing.sharedctypes import Value
 import numpy as np
 import pandas as pd
 import plotly.graph_objects as go
+# from bbox_proj import project_obb_to_image
 import pyvista as pv
 from pyvista import examples
 from PIL import Image
@@ -16,7 +17,6 @@ from argparse import ArgumentParser
 import json
 import copy
 from scipy.ndimage import gaussian_filter
-from bbox_proj import project_obb_to_image
 
 def gkern_3d(w=10, l=10, h=3, sig=1.):
     """\
@@ -300,9 +300,9 @@ def render_volume(heatmap, room_bbox, res, output_dir, args, json_dict=None, box
                     shape = img1.shape
                     hmp = cv2.resize(hmp, (shape[1], shape[0]), interpolation = cv2.INTER_AREA)
                     img2 = copy.deepcopy(img1)
-                    img2 = project_obb_to_image(img2, intrinsic_mat, np.linalg.inv(pose), boxes_8)
-                    img = np.concatenate([img1, hmp, img2], axis=1)
-                    cv2.imwrite(join(output_dir, name+'_hmp.png'), img)
+                    # img2 = project_obb_to_image(img2, intrinsic_mat, np.linalg.inv(pose), boxes_8)
+                    # img = np.concatenate([img1, hmp, img2], axis=1)
+                    # cv2.imwrite(join(output_dir, name+'_hmp.png'), img)
 
 def parse_args():
     parser = ArgumentParser()

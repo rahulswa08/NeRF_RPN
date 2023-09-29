@@ -25,6 +25,7 @@ RUN apt-get -y update \
       doxygen \
     && rm -rf /var/lib/apt/lists/*
 
+RUN apt-get update && apt-get install -y lsb-release && apt-get clean all
 # Install ROS noetic (desktop full)
 # RUN sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
 # RUN curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo apt-key add -
@@ -80,6 +81,44 @@ RUN python3 -m pip install -r /tmp/requirements.txt \
 #     (echo "Note: Unable find Cuda. See the README Build Section for details on fixing" && false)
 
 # RUN ldconfig && pip3 install "git+https://github.com/facebookresearch/pytorch3d.git@v0.7.2"
+
+# RUN apt update && apt install -y libsm6 libxext6 && rm -rf /var/lib/apt/lists/*
+# RUN apt-get install -y libxrender-dev && rm -rf /var/lib/apt/lists/*
+# RUN apt-get update && apt-get -y install cmake protobuf-compiler
+# RUN apt remove --purge --auto-remove cmake
+
+# RUN sudo apt update && \
+#     sudo apt install -y software-properties-common lsb-release && \
+#     sudo apt clean all \
+#     && rm -rf /var/lib/apt/lists/*
+
+# RUN wget -O - https://apt.kitware.com/keys/kitware-archive-latest.asc 2>/dev/null | gpg --dearmor - | sudo tee /etc/apt/trusted.gpg.d/kitware.gpg >/dev/null 
+
+# RUN sudo apt update && \
+#     sudo apt install -y software-properties-common lsb-release && \
+#     sudo apt clean all \
+#     && rm -rf /var/lib/apt/lists/*
+
+# RUN apt-add-repository 'deb https://apt.kitware.com/ubuntu/ $(lsb_release -cs) main'
+
+# RUN sudo apt update
+# RUN sudo apt install kitware-archive-keyring
+# RUN sudo rm /etc/apt/trusted.gpg.d/kitware.gpg
+
+# RUN sudo apt update
+# RUN sudo apt install cmake
+
+RUN apt-get update \
+  && apt-get -y install build-essential \
+  && apt-get install -y wget \
+  && rm -rf /var/lib/apt/lists/* \
+  && wget https://github.com/Kitware/CMake/releases/download/v3.24.1/cmake-3.24.1-Linux-x86_64.sh \
+      -q -O /tmp/cmake-install.sh \
+      && chmod u+x /tmp/cmake-install.sh \
+      && mkdir /opt/cmake-3.24.1 \
+      && /tmp/cmake-install.sh --skip-license --prefix=/opt/cmake-3.24.1 \
+      && rm /tmp/cmake-install.sh \
+      && ln -s /opt/cmake-3.24.1/bin/* /usr/local/bin
 
 RUN useradd -m -l -u ${USER_ID} -s /bin/bash ${USER_NAME} \
     && usermod -aG video ${USER_NAME}

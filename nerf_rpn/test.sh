@@ -17,4 +17,5 @@ python3 -u run_rpn.py \
 --normalize_density \
 --rotated_bbox \
 --batch_size 2 \
---gpus 0 
+--gpus 0 \
+--output_proposals

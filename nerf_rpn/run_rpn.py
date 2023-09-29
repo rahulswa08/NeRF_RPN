@@ -151,7 +151,6 @@ class Trainer:
         self.device_id = device_id
         self.logger = logger if logger is not None else logging.getLogger()
 
-        breakpoint()
         if args.dataset_name == 'hypersim':
             self.dataset = HypersimRPNDataset
         elif args.dataset_name == 'front3d':
@@ -466,9 +465,11 @@ class Trainer:
         gt_boxes_list = []
         scenes_list = []
         features_list = []
+        # breakpoint()
 
         for batch in tqdm(dataloader):
             rgbsigma, gt_boxes, scenes = batch
+            # breakpoint()
             if torch.cuda.is_available():
                 rgbsigma = [item.cuda() for item in rgbsigma]
             

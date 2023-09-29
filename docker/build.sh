@@ -6,6 +6,7 @@ IMAGE_TAG="nerf_rpn"
 DOCKER_OPTIONS=""
 DOCKER_OPTIONS+="-t $IMAGE_TAG:latest "
 DOCKER_OPTIONS+="-f $SCRIPT_DIR/container.Dockerfile "
+# DOCKER_OPTIONS+="--no-cache "
 DOCKER_OPTIONS+="--build-arg USER_ID=$(id -u) --build-arg USER_NAME=$(whoami) "
 
 DOCKER_CMD="docker build $DOCKER_OPTIONS $SCRIPT_DIR"

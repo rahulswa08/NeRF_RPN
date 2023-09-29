@@ -11,4 +11,5 @@ python3 -u visualize_rpn_input.py \
 --feature_dir ${DATA_ROOT}/features \
 --box_dir ${DATA_ROOT}/obb \
 --box_format ${BOX_FORMAT} \
+--output_proposals true\
 
